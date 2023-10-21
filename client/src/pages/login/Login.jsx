@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import logBg from '../../assets/Event/form_bg3.jpg';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
+import { GoHome } from "react-icons/go";
 
 const Login = () => {
 
@@ -17,12 +18,15 @@ const Login = () => {
                 <div className="container h-full px-6 lg:py-24 md:py-16 sm:py-8 py-8">
                     <div className="inner_box">
                         {/* <!-- Left column container with background--> */}
-                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img">
+                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img relative">
                             <img
                                 src={logBg}
-                                className="w-full h-full"
+                                className="w-full h-full  object-cover"
                                 alt="Phone image"
                             />
+                            <Link to='/'  class="backHome">
+                               <GoHome />
+                            </Link>
                         </div>
 
                         <div className="w-full h-full p-8 space-y-3 rounded-xl dark:text-gray-100">

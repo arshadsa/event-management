@@ -81,10 +81,6 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a className="menu_item" href="/">
-                    </a>
-                  </li>
-                  <li>
                     <a className="menu_item" href="/career">
                       Careers
                     </a>

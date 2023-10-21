@@ -18,12 +18,15 @@ const Register = () => {
                 <div className="container h-full px-6 lg:py-24 md:py-16 sm:py-8 py-8">
                     <div className="inner_box">
                         {/* <!-- Left column container with background--> */}
-                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img">
+                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img relative">
                             <img
                                 src={logBg}
-                                className="w-full h-full"
+                                className="w-full h-full  object-cover"
                                 alt="Phone image"
                             />
+                              <Link to='/'  class="backHome">
+                               <GoHome />
+                            </Link>
                         </div>
 
                         <div className="w-full p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">

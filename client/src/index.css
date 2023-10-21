@@ -67,7 +67,7 @@
 }
 
 .log_bg {
-  @apply bg-[url('assets/Event/log_bg2.jpg')] w-full h-screen bg-cover bg-no-repeat bg-center;
+  @apply bg-[url('assets/Event/log_bg2.jpg')] w-full h-full bg-cover bg-no-repeat bg-center py-[5px];
 }
 
 .inner_box{
@@ -80,12 +80,17 @@
 
 
 .active{
-  @apply cursor-pointer h-[50px] flex items-center pl-5 text-white mb-1 relative rounded-full z-10 bg-slate-100 before:content-[''] before:w-[30px] before:h-[30px] before:-mt-[30px] before:rotate-90 before:scale-[1.04] before:bg-[length:100%]  before:absolute before:top-0 before:right-[-5px] before:-mr-5 after:content-[''] after:w-[30px] after:h-[30px] after:mt-[50px] after:scale-[1.04] after:bg-[length:100%] after:bg-[url('assets/cruved.png')] after:absolute after:top-0 after:right-0 after:-mr-5 before:bg-[url('assets/cruved.png')] 
+  @apply cursor-pointer h-[50px] flex items-center pl-5 text-white mb-1 relative rounded-full z-10 bg-slate-100 before:content-[''] before:w-[30px] before:h-[30px] before:-mt-[30px] before:rotate-90 before:scale-[1.04] before:bg-[length:100%]  before:absolute before:top-0 before:right-[-5px] before:-mr-5 after:content-[''] after:w-[30px] after:h-[30px] after:mt-[50px] after:scale-[1.04] after:bg-[length:100%] after:bg-[url('assets/cruved.png')] after:absolute after:top-0 after:right-0 after:-mr-5 before:bg-[url('assets/cruved.png')]
 }
 
+/* .current{
+  @apply  rounded-full bg-sky-500 p-0 text-sm text-white shadow-md transition duration-150 ease-in-out bg-sky-500;
+} */
 
-
-
+.backHome{
+  @apply text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md text-sm p-1.5 text-center inline-flex items-center mr-2
+  absolute top-[15px] right-[-21px] 
+}
 
 
 

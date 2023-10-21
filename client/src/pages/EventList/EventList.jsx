@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import InnerBanner from "./innerBanner/InnerBanner";
 import axiosRequest from "../../utils/axios.service";
 import { toast } from 'react-hot-toast';
+import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 
 const CenteredItemList = () => {
 
@@ -23,6 +24,9 @@ const CenteredItemList = () => {
       toast.error(error, { id: "eventform" });
     }
   }, [isError])
+
+
+  const pages = Array.from({ length: 5 }, (_, index) => index + 1);
 
   return (
     <>
@@ -74,9 +78,25 @@ const CenteredItemList = () => {
                   ))}
 
                 </div>
+
+
               )}
 
-
+              <nav className="mt-10 mx-auto">
+                <ul class="flex">
+                  <li onClick={() => setPage(i)} class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300 cursor-pointer">
+                      <span class="material-icons text-sm"><MdNavigateBefore /></span>
+                  </li>
+                  {pages.map((_, i) => (
+                    <li key={i} onClick={() => setPage(i)} class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300 cursor-pointer current">
+                     {i}
+                    </li>
+                  ))}
+                   <li onClick={() => setPage(i)} class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300 cursor-pointer">
+                      <span class="material-icons text-sm"><MdNavigateNext /></span>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
@@ -86,5 +106,4 @@ const CenteredItemList = () => {
 };
 
 export default CenteredItemList;
-
 
