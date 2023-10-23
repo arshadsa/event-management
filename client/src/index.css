@@ -92,7 +92,9 @@
   absolute top-[15px] right-[-21px] 
 }
 
-
+.list_img{
+  @apply absolute inset-0 w-full h-full object-fill object-center bg-blue-400 bg-opacity-30 bg-cover bg-bottom 
+}
 
 
 

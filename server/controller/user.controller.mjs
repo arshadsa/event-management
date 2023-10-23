@@ -15,12 +15,12 @@ export async function createUser(req, res) {
     const updatedUser = await user.save({ validateBeforeSave: true });
     const token = genereateJwt({ id: user._id, status: user.status, role: user.role });
     // mail sending functionality
-    // const template = confirmMailTemp(updatedUser);
-    // sendMail({
-    //   user: updatedUser,
-    //   subject: "Verify Your Email Address.",
-    //   template
-    // })
+    const template = confirmMailTemp(updatedUser);
+    sendMail({
+      user: updatedUser,
+      subject: "Verify Your Email Address.",
+      template
+    })
     res.status(200).json({
       success: true,
       user: { email, firstName, lastName, userImage, token }
