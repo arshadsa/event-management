@@ -25,9 +25,9 @@ const Login = () => {
     
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const username = e.target.username.value;
+        const email = e.target.email.value;
         const password = e.target.password.value;
-        const data = {email:username, password};
+        const data = {email, password};
 
         const response = await axiosRequest.post('/user/login', data);
         
@@ -35,7 +35,7 @@ const Login = () => {
             console.log(response.data);
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
-            navigate('/');
+            navigate(-1)
         }
     };
 
@@ -53,15 +53,15 @@ const Login = () => {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-1 text-sm">
                                     <label
-                                        htmlFor="username"
+                                        htmlFor="email"
                                         className="block dark:text-gray-400"
                                     >
-                                        Username
+                                        Email
                                     </label>
                                     <input
-                                        type="text"
-                                        name="username"
-                                        id="username"
+                                        type="email"
+                                        name="email"
+                                        id="email"
                                         placeholder="Username"
                                         className={inputClasses}
                                     />

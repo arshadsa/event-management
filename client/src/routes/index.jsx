@@ -20,6 +20,7 @@ import {
   Events
 } from "./routes";
 import Layout from "../components/Layout";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -37,11 +38,13 @@ const routes = createBrowserRouter(
       <Route path="eventlist" element={<EventList />} />
       <Route path="eventrequest/:id" element={<EventRequest />} />
       <Route path="eventformdevelope" element={<EventFormDevelope />} />
-      <Route path="dashboard" element={<DashboardLayout />}>
-        <Route index element={<Table />} />
-        <Route path='users' element={<Users />} />
-        <Route path='profile' element={<Profile />}/>
-        <Route path='events' element={<Events />}/>
+      <Route path="dashboard/*" element={<PrivateRoute />}>
+        <Route path="" element={<DashboardLayout />}>
+          <Route index element={<Table />} />
+          <Route path='users' element={<Users />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='events' element={<Events />} />
+        </Route>
       </Route>
     </Route>
   )
