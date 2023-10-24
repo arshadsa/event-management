@@ -18,12 +18,10 @@ const Register = () => {
 
     // State variables for form data and validation errors
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        userName: "",
         email: "",
         password: "",
         confirmPassword: "",
-        number: "",
     });
 
     const [errors, setErrors] = useState({});
@@ -34,12 +32,8 @@ const Register = () => {
         // Validate the form data (add your validation logic here)
         const validationErrors = {};
 
-        if (!formData.firstName) {
-            validationErrors.firstName = "First Name is required";
-        }
-
-        if (!formData.lastName) {
-            validationErrors.lastName = "Last Name is required";
+        if (!formData.userName) {
+            validationErrors.userName = "First Name is required";
         }
 
         if (!formData.email) {
@@ -56,10 +50,6 @@ const Register = () => {
 
         if (formData.password !== formData.confirmPassword) {
             validationErrors.confirmPassword = "Passwords do not match";
-        }
-
-        if (!formData.number) {
-            validationErrors.number = "Number is required";
         }
 
         // If there are validation errors, set them in the state
@@ -109,38 +99,22 @@ const Register = () => {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-1 text-sm">
                                     <label htmlFor="firstName" className="block dark:text-gray-400">
-                                        First Name
+                                        Your Name
                                     </label>
                                     <input
                                         type="text"
-                                        name="firstName"
-                                        id="firstName"
-                                        placeholder="First Name"
+                                        name="yourName"
+                                        id="yourName"
+                                        placeholder="Your Name"
                                         className={inputStyles}
-                                        value={formData.firstName}
+                                        value={formData.userName}
                                         onChange={handleInputChange}
                                     />
                                     {errors.firstName && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+                                        <p className="text-red-500 text-xs mt-1">{errors.userName}</p>
                                     )}
                                 </div>
-                                <div className="space-y-1 text-sm">
-                                    <label htmlFor="lastName" className="block dark:text-gray-400">
-                                        Last Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        id="lastName"
-                                        placeholder="Last Name"
-                                        className={inputStyles}
-                                        value={formData.lastName}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.lastName && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
-                                    )}
-                                </div>
+                                
                                 <div className="space-y-1 text-sm">
                                     <label htmlFor="email" className="block dark:text-gray-400">
                                         Email
@@ -192,23 +166,7 @@ const Register = () => {
                                         <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>
                                     )}
                                 </div>
-                                <div className="space-y-1 text-sm">
-                                    <label htmlFor="number" className="block dark:text-gray-400">
-                                        Number
-                                    </label>
-                                    <input
-                                        type="number"
-                                        name="number"
-                                        id="number"
-                                        placeholder="Number"
-                                        className={`${inputStyles} h-12`}
-                                        value={formData.number}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errors.number && (
-                                        <p className="text-red-500 text-xs mt-1">{errors.number}</p>
-                                    )}
-                                </div>
+                               
                                 <button type="submit" className={buttonStyles}>
                                     <span className={btnSpanStyles} />
                                     <span className={btnTextStyles}>Register</span>

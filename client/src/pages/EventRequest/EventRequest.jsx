@@ -16,7 +16,7 @@ function DynamicForm() {
     fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/eventForm/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        const preItem = JSON.parse(localStorage.getItem("ER")) || null;
+        const preItem = JSON.parse(localStorage.getItem(id)) || null;
         const updatedData = data.labels.map((label) => ({
           label: label.name,
           value: "",
@@ -29,7 +29,6 @@ function DynamicForm() {
       .catch((error) => console.error(error));
   }, [id]);
 
-console.log(fields)
   const handleInputChange = (index, event) => {
     const newFields = [...fields];
     newFields[index].value = event.target.value;
@@ -62,7 +61,7 @@ console.log(fields)
     event.preventDefault();
     const dataToSend = fields.map(({ label, value }) => ({ label, value }));
     if (!user?.email) {
-      localStorage.setItem("ER", JSON.stringify(fields));
+      localStorage.setItem(id, JSON.stringify(fields));
       return navigate("/login")
     }
     fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/events/request/${id}`, {
@@ -72,7 +71,7 @@ console.log(fields)
     })
       .then((response) => response.json())
       .catch((error) => console.error(error))
-      .finally(()=> localStorage.removeItem("ER"));
+      .finally(()=> localStorage.removeItem(id));
   };
 
 

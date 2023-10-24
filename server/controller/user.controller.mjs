@@ -41,7 +41,7 @@ export async function profile(req, res) {
 
 export async function createUser(req, res) {
   try {
-    const { role, email, firstName, lastName, userImage } = req.body;
+    const { role, email, userName, userImage } = req.body;
     if (role === "admin" || role === "moderator") {
       return res.status(401).send("You can't perform this action");
     }
@@ -58,7 +58,7 @@ export async function createUser(req, res) {
     // })
     res.status(200).json({
       success: true,
-      user: { email, firstName, lastName, userImage, token }
+      user: { email, userName, userImage, token }
     });
   } catch (error) {
     const message = handleError(error);
@@ -92,13 +92,13 @@ export async function loginUser(req, res) {
         message: "Email or password is not correct!"
       })
     }
-    const { firstName, lastName, userImage, status, role } = user.toObject();
+    const { userName, userImage, status, role } = user.toObject();
     const token = genereateJwt({ id: user._id, status, role });
     res.status(200).json({
       success: true,
       message: "Successfully log in.",
       data: {
-        user: { firstName, lastName, userImage },
+        user: { userName, userImage },
         token
       }
     })
@@ -134,13 +134,12 @@ export async function updateProfile(req, res) {
   try {
     const id = req.user.id;
     const {
-      firstName,
-      lastName,
+      userName,
       contactNumber,
       userImage,
       password,
       ...rest } = req.body;
-    const update = { firstName, lastName, contactNumber, userImage, password };
+    const update = { userName, contactNumber, userImage, password };
     const option = { new: true, runValidators: true };
     await User.findByIdAndUpdate(id, update, option);
     res.status(200).json({
