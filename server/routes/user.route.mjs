@@ -8,12 +8,14 @@ import {
   createUser,
   loginUser,
   updateProfile,
-  listUsers
+  listUsers,
+  profile
 } from "../controller/user.controller.mjs";
 
 const router = express.Router();
 
 router.get("/", listUsers);
+router.get("/profile", authentication, profile);
 router.post("/signup", createUser);
 router.get("/confirm_email", confirmEmail);
 router.post("/login", loginUser);

@@ -15,8 +15,7 @@ const Users = () => {
       toast.error(error, { id: "user" });
     }
   }, [isError])
-
-	console.log(data);
+	
 	return (
 		<div>
 			<Table data={data?.users}/>

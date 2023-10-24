@@ -77,14 +77,18 @@ const Header = () => {
               >
                 <ul className="flex items-center gap-6 text-base">
                   <li>
-                    <Link className="menu_item" to="/about">
+                    {/* <Link className="menu_item" to="/about">
                       About
-                    </Link>
+                    </Link> */}
+                    <Link to='/about' className='menu_item'>About</Link>
                   </li>
+
                   <li>
-                    <Link className="menu_item" to="/career">
-                      Careers
-                    </Link>
+                    {/* <Link className="menu_item" to="/career">
+                      
+                    </Link> */}
+                      <Link to='/career' className='menu_item'>Careers</Link>
+
                   </li>
                   <li>
                     <Link className="menu_item" to="/services">

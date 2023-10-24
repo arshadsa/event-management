@@ -21,6 +21,24 @@ export async function listUsers(req, res) {
   }
 }
 
+export async function profile(req, res) {
+  try {
+    console.log(req.user);
+    const id = req.user.id;
+    const user = await User.findById(id).select("-password");
+    res.status(200).json({
+      success: true,
+      user
+    })
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success: false,
+      message
+    })
+  }
+}
+
 export async function createUser(req, res) {
   try {
     const { role, email, firstName, lastName, userImage } = req.body;
@@ -32,12 +50,12 @@ export async function createUser(req, res) {
     const updatedUser = await user.save({ validateBeforeSave: true });
     const token = genereateJwt({ id: user._id, status: user.status, role: user.role });
     // mail sending functionality
-    // const template = confirmMailTemp(updatedUser);
-    // sendMail({
-    //   user: updatedUser,
-    //   subject: "Verify Your Email Address.",
-    //   template
-    // })
+    const template = confirmMailTemp(updatedUser);
+    sendMail({
+      user: updatedUser,
+      subject: "Verify Your Email Address.",
+      template
+    })
     res.status(200).json({
       success: true,
       user: { email, firstName, lastName, userImage, token }

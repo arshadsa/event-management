@@ -2,6 +2,7 @@ import JWT from "jsonwebtoken";
 import { promisify } from "util";
 
 export default async function authentication(req, res, next) {
+  console.log("authentication middleware");
   try {
     const isAuthHeader = req?.headers?.authorization;
     if (!isAuthHeader || !isAuthHeader.startsWith("Bearer ")) {
@@ -19,6 +20,8 @@ export default async function authentication(req, res, next) {
       })
     }
     req.user = decodedUser
+
+    console.log(req.user);
 
     next();
 

@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import logBg from "../../assets/Event/form_bg3.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { GoHome, GoHomeFill } from "react-icons/go";
 import axiosRequest from "../../utils/axios.service";
+import { BiSolidHome } from "react-icons/bi";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -45,8 +47,15 @@ const Login = () => {
                 <div className="container h-full px-6 lg:py-24 md:py-16 sm:py-8 py-8">
                     <div className="inner_box">
                         {/* <!-- Left column container with background--> */}
-                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img">
-                            <img src={logBg} className="w-full h-full" alt="Phone image" />
+                        <div className="mb-12 md:mb-0 w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 saml_img relative">
+                            <img
+                                src={logBg}
+                                className="w-full h-full"
+                                alt="Phone image"
+                            />
+                              <Link to='/'  class="backHome">
+                               <BiSolidHome />
+                            </Link>
                         </div>
                         <div className="w-full h-full p-8 space-y-3 rounded-xl dark:text-gray-100">
                             <h1 className="text-2xl font-bold text-center">Login</h1>
