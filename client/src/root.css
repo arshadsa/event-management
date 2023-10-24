@@ -360,8 +360,18 @@ ul, li {
 }
 .review:nth-child(even) .list_img{
   clip-path: polygon(0 0, 100% 0%, 88% 100%, 0 100%);
+  border-radius: 10px;
+}
+.review:nth-child(even) .list_img img{
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
 }
 .list_img{
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 12% 100%);
 
+}
+
+.active .selected{
+  color: #000;
 }

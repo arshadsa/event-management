@@ -4,6 +4,41 @@ import sendMail from "../utils/sendMail.mjs";
 import handleError from "../utils/errorHandler.mjs";
 import genereateJwt from "../utils/generateJwt.mjs";
 
+export async function listUsers(req, res) {
+  try {
+    // const users = await User.find({ status: "active" }).select("-password");
+    const users = await User.find().select("-password");
+    res.status(200).json({
+      success: true,
+      users
+    })
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success: false,
+      message
+    })
+  }
+}
+
+export async function profile(req, res) {
+  try {
+    console.log(req.user);
+    const id = req.user.id;
+    const user = await User.findById(id).select("-password");
+    res.status(200).json({
+      success: true,
+      user
+    })
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success: false,
+      message
+    })
+  }
+}
+
 export async function createUser(req, res) {
   try {
     const { role, email, firstName, lastName, userImage } = req.body;
@@ -135,6 +170,30 @@ export async function controlUser(req, res) {
     const message = handleError(error);
     res.status(400).json({
       success: false,
+      message
+    })
+  }
+}
+
+export async function deleteUser(req, res){
+  try{
+    const email = req.params.email;
+    const result = await User.findOneAndDelete({email});
+    if(!result){
+      return res.status(404).json({
+        success:false,
+        message:"No user found!"
+      })}
+    else {
+      res.status(200).json({
+        success:true,
+        message:"User successfully deleted!"
+      })
+    }
+  } catch (error) {
+    const message = handleError(error);
+    res.status(400).json({
+      success:false,
       message
     })
   }

@@ -1,7 +1,10 @@
 import React from "react";
+import InnerBanner from "../../components/Shared/innerBanner/InnerBanner";
 
-function Contact() {
+const Contact = () => {
   return (
+   <>
+      <InnerBanner title='Contact' name='Contact' />
     <div className="bg-gray-100">
       <div className="container mx-auto py-12 px-4">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">Contact Us</h1>
@@ -32,6 +35,7 @@ function Contact() {
         </div>
       </div>
     </div>
+   </>
   );
 }
 

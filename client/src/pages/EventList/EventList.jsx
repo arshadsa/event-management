@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query"
 import { Link } from "react-router-dom";
-import InnerBanner from "./innerBanner/InnerBanner";
+import InnerBanner from "../../components/Shared/innerBanner/InnerBanner";
 import axiosRequest from "../../utils/axios.service";
 import { toast } from 'react-hot-toast';
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
@@ -32,7 +32,7 @@ const CenteredItemList = () => {
     <>
 
 
-      <InnerBanner />
+      <InnerBanner title= 'Event List' name='Event List' />
 
       <section className="py-16">
         <div className="container">

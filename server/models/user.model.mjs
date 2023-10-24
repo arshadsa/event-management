@@ -68,7 +68,7 @@ const userSchema = new mongoose.Schema({
   providerId: String,
   status: {
     type: String,
-    default: "inactive",
+    default: "active",
     enum: ["active", "inactive", "blocked"],
   },
   confirmationToken: String,

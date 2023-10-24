@@ -1,0 +1,5 @@
+{
+	"scripts": {
+		"start": "concurrently \"cd client && npm run ars\" \"cd server && npm run ars\""
+	}
+}
