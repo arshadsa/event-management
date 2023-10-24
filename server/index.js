@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080;
 import userRoute from "./routes/user.route.mjs";
 import eventsRoute from "./routes/event.route.mjs";
 import eventFormRoute from "./routes/eventForm.route.mjs";
+import blogRoute from "./routes/blog.route.mjs";
 
 const app = express();
 
@@ -27,6 +28,7 @@ dbConnect()
 app.use("/api/user", userRoute);
 app.use("/api/eventForm", eventFormRoute);
 app.use("/api/events", eventsRoute);
+app.use("/api/blog", blogRoute);
 
 app.get("/", (req, res) => {
   res.send("Running Products Server");
